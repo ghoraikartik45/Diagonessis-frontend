@@ -77,7 +77,7 @@ const UserInfo: React.FC = () => {
         
         // Redirect to home page after successful update
         setTimeout(() => {
-          window.location.href = '/Home';
+          window.location.href = '/home';
         }, 1500);
       } else {
         setError(response.message || 'Failed to update profile');

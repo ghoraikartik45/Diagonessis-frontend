@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { 
   Button, 
@@ -51,6 +52,7 @@ const initialFormState: FormState = {
 };
 
 const SignInUp: React.FC = () => {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState<FormState>(initialFormState);
 
   // Helper function to update form state
@@ -201,7 +203,7 @@ const SignInUp: React.FC = () => {
       if (response.success) {
         showSuccess('Sign in successful');
         setTimeout(() => {
-          window.location.href = '/Home';
+          navigate('/home');
         }, 1500);
       } else {
         updateFormState({ 
@@ -246,7 +248,7 @@ const SignInUp: React.FC = () => {
       if (response.success) {
         showSuccess('Account created successfully');
         setTimeout(() => {
-          window.location.href = '/user-info';
+          navigate('/user-info');
         }, 1500);
       } else {
         updateFormState({ 
