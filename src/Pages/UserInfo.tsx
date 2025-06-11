@@ -10,6 +10,7 @@ import {
   Alert
 } from '@mui/material';
 import { apiService } from '../services/apiService';
+import { useNavigate } from 'react-router-dom';
 
 
 interface UserInfoForm {
@@ -20,6 +21,7 @@ interface UserInfoForm {
 }
 
 const UserInfo: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<UserInfoForm>({
     name: '',
     age: '',
@@ -77,7 +79,7 @@ const UserInfo: React.FC = () => {
         
         // Redirect to home page after successful update
         setTimeout(() => {
-          window.location.href = '/home';
+          navigate('/home');
         }, 1500);
       } else {
         setError(response.message || 'Failed to update profile');
