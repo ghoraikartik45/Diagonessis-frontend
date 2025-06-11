@@ -511,7 +511,7 @@ const ChatApp: React.FC = () => {
         </AppBar>
 
         {/* Message Area */}
-        <Box sx={{ flexGrow: 1, overflowY: 'auto', p: { xs: 2, md: 3 } }}>
+        <Box sx={{ flexGrow: 1,  p: { xs: 2, md: 3 } }}>
           {currentMessages.length === 0 ? (
             <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100%" textAlign="center">
               <Avatar sx={{ width: 64, height: 64, bgcolor: '#DBEAFE', mb: 2 }}>
@@ -542,7 +542,7 @@ const ChatApp: React.FC = () => {
                         border: msg.isUser ? 'none' : '1px solid #E5E7EB',
                       }}
                     >
-                      <Typography component="div" sx={{ lineHeight: 1.6 }}>
+                      <Typography component="div" sx={{ lineHeight: 1.3 }} >
                         <ReactMarkdown>{msg.text}</ReactMarkdown>
                       </Typography>
 
