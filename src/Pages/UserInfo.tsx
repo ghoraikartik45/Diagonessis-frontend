@@ -28,7 +28,7 @@ const UserInfo: React.FC = () => {
     profession: '',
     address: ''
   });
-  
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -48,23 +48,23 @@ const UserInfo: React.FC = () => {
   };
 
   const isSubmitDisabled = (): boolean => {
-    return loading || 
-           !formData.name.trim() || 
-           !formData.age.trim() || 
-           !isValidAge(formData.age) ||
-           !formData.profession.trim() || 
-           !formData.address.trim();
+    return loading ||
+      !formData.name.trim() ||
+      !formData.age.trim() ||
+      !isValidAge(formData.age) ||
+      !formData.profession.trim() ||
+      !formData.address.trim();
   };
 
 
-  
-    const handleSubmit = async (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     setLoading(true);
     setError(null);
     setSuccess(null);
-    
+
     try {
       const response = await apiService.updateUserProfile({
         name: formData.name,
@@ -76,7 +76,7 @@ const UserInfo: React.FC = () => {
       if (response.success) {
         setSuccess('Profile updated successfully!');
         setShowSnackbar(true);
-        
+
         // Redirect to home page after successful update
         setTimeout(() => {
           navigate('/home');
@@ -95,11 +95,53 @@ const UserInfo: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          py: 4,
+          px: 2,
+          textAlign: 'center',
+          width: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: { xs: 'column', sm: 'row' },
+            gap: 2,
+          }}
+        >
+          <img
+            src="/logo.jpg"
+            alt="Logo of DiagonessisAI"
+            loading="lazy"
+            style={{
+              width: 60,
+              height: 60,
+              objectFit: 'contain',
+            }}
+          />
+          <Typography
+            variant="h5"
+            component="h1"
+            sx={{
+              fontWeight: 'bold',
+              fontSize: { xs: '1.5rem', sm: '2rem' },
+              mt: { xs: 1, sm: 0 },
+            }}
+          >
+            DiagonessisAI
+          </Typography>
+        </Box>
+      </Box>
       <Box sx={{ mt: 4, mb: 4 }}>
         <Typography variant="h4" gutterBottom align="center">
           User Information
         </Typography>
-        
+
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <TextField
             fullWidth
@@ -180,8 +222,8 @@ const UserInfo: React.FC = () => {
           onClose={() => setShowSnackbar(false)}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          <Alert 
-            onClose={() => setShowSnackbar(false)} 
+          <Alert
+            onClose={() => setShowSnackbar(false)}
             severity={error ? 'error' : 'success'}
             sx={{ width: '100%' }}
           >
