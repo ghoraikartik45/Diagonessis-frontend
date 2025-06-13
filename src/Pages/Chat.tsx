@@ -378,7 +378,8 @@ const ChatApp: React.FC = () => {
       await loadMessages(chatId);
     }
   };
-
+  console.log(isMediumScreen);
+  
   const handleLogout = async () => {
     try {
       await apiService.logout();
